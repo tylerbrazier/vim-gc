@@ -24,6 +24,6 @@ function s:gc()
 		\->map('v:val.bufnr')
 		\->join(' ')
 	if !empty(garbage)
-		exec 'bdelete' garbage
+		exec 'silent bdelete' garbage
 	endif
 endfunction
