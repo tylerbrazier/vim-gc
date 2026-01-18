@@ -9,7 +9,7 @@ let g:gc_delete_age = get(g:, 'gc_delete_age', 3)
 augroup gc
 	autocmd!
 	autocmd BufModifiedSet,BufWrite * let b:gc = 0
-	autocmd BufRead * call s:gc()
+	autocmd BufNew * call s:gc()
 augroup END
 
 function s:gc()
