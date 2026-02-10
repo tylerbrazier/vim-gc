@@ -6,6 +6,12 @@ let g:loaded_gc = 1
 let g:gc_unlist_age = get(g:, 'gc_unlist_age', 1)
 let g:gc_delete_age = get(g:, 'gc_delete_age', 3)
 
+command GC ls! h | call feedkeys(':bd '
+			\..getbufinfo()
+			\->filter('v:val.hidden && !v:val.changed')
+			\->map('v:val.bufnr')
+			\->join(' '))
+
 augroup gc
 	autocmd!
 	autocmd BufModifiedSet,BufWrite * let b:gc = 0
