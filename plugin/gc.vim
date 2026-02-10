@@ -14,7 +14,7 @@ augroup END
 
 function s:gc()
 	let garbage = getbufinfo()
-		\->filter({i,v -> v.hidden
+		\->filter({i,v -> v.hidden && !v.changed
 			\ && empty(getbufvar(v.bufnr, '&buftype'))
 			\ && get(v.variables, 'gc', 1)})
 		\->sort({a,b -> a.lastused < b.lastused ? 1 : -1})
